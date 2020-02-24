@@ -14,6 +14,8 @@
 #import "NSButton+Extension.h"
 #import "NSString+Extension.h"
 #import "StringEditViewController.h"
+#import "utils.h"
+#import "NSTimer+GCD.h"
 
 #define kStrKey @"key"
 #define kRemove @"remove"
@@ -253,7 +255,7 @@
         return NO;
     }
     StringSetting *setting = [StringModel projectSettingByProjectPath:self.projectPath projectName:self.projectName];
-    if (setting.language == StringLanguageSwift) {
+    if (setting.language == swift) {
         NSString *regex = @"[_a-zA-Z][_a-zA-Z0-9]*";
         NSPredicate *predicate = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
         return [predicate evaluateWithObject:key];
@@ -299,11 +301,11 @@
     [_actionArray removeAllObjects];
     [self.saveBtn setEnabled:NO];
     
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    [NSTimer backgroundTask:^{
         StringSetting *setting = [StringModel projectSettingByProjectPath:self.projectPath projectName:self.projectName];
         NSArray *lprojDirectorys = [StringModel lprojDirectoriesWithProjectSetting:setting project:self.projectPath];
         if (lprojDirectorys.count == 0) {
-            dispatch_async(dispatch_get_main_queue(), ^{
+            [NSTimer mainTask:^{
                 NSAlert *alert = [[NSAlert alloc]init];
                 [alert setMessageText: NSLocalizedString(@"NoLocalizedFiles", nil)];
                 [alert addButtonWithTitle: NSLocalizedString(@"OK", nil)];
@@ -311,7 +313,7 @@
                 [alert beginSheetModalForWindow:self.window completionHandler:^(NSModalResponse returnCode) {
                     self.isRefreshing = NO;
                 }];
-            });
+            }];
         } else {
             [self.stringArray removeAllObjects];
             [self.keyArray removeAllObjects];
@@ -331,12 +333,12 @@
             NSArray *sortedArray = [tmp sortedArrayUsingSelector:@selector(compare:)];
             [self.keyArray addObjectsFromArray:sortedArray];
             
-            dispatch_async(dispatch_get_main_queue(), ^{
+            [NSTimer mainTask:^{
                 [self refreshTableView];
                 self.isRefreshing = NO;
-            });
+            }];
         }
-    });
+    }];
 }
 
 - (IBAction)searchAnswer:(id)sender {
@@ -408,22 +410,19 @@
     [self searchAnswer:nil];
     
     __weak __typeof(self) weakSelf = self;
-    dispatch_async(dispatch_get_global_queue(0, 0), ^{
+    [NSTimer backgroundTask:^{
         StringSetting *settings = [StringModel projectSettingByProjectPath:weakSelf.projectPath projectName:weakSelf.projectName];
-        NSDictionary *dict = [StringModel findItemsWithProjectSetting:settings
-                                                          projectPath:weakSelf.projectPath
-                                                          findStrings:weakSelf.showArray
-                                                                block:^(float progress) {
-                                                                    dispatch_async(dispatch_get_main_queue(), ^{
-                                                                        weakSelf.checkIndicator.doubleValue = progress;
-                                                                    });
-                                                                }];
-        dispatch_async(dispatch_get_main_queue(), ^{
+        NSDictionary *dict = [StringModel findItemsWithProjectSetting:settings projectPath:weakSelf.projectPath findStrings:weakSelf.showArray block:^(float progress) {
+            [NSTimer mainTask:^{
+                weakSelf.checkIndicator.doubleValue = progress;
+            }];
+        }];
+        [NSTimer mainTask:^{
             weakSelf.isChecking=NO;
             [weakSelf.infoDict addEntriesFromDictionary:dict];
             [weakSelf searchAnswer:nil];
-        });
-    });
+        }];
+    }];
 }
 
 - (IBAction)addAction:(id)sender {
@@ -470,46 +469,7 @@
 }
 
 - (IBAction)exportXMLAction:(id)sender {
-    NSString *docPath = [NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) objectAtIndex:0];
-    docPath = [docPath stringByAppendingPathComponent:[self.projectName stringByDeletingPathExtension]];
-    BOOL isDirectory = NO;
-    if (![[NSFileManager defaultManager] fileExistsAtPath:docPath isDirectory:&isDirectory] || !isDirectory) {
-        [[NSFileManager defaultManager] createDirectoryAtPath:docPath withIntermediateDirectories:YES attributes:nil error:nil];
-    }
-    NSLog(@"%s %@",__func__,docPath);
-    
-    NSRegularExpression *regularExpression = [NSRegularExpression regularExpressionWithPattern:kRegularExpressionPattern options:0 error:nil];
-    
-    for (StringModel *model in _stringArray) {
-        NSString *string = [NSString stringWithContentsOfFile:model.filePath usedEncoding:nil error:nil];
-        
-        NSMutableString *mutableString = [NSMutableString string];
-        [string enumerateLinesUsingBlock:^(NSString *line, BOOL *stop) {
-            NSTextCheckingResult *result = [regularExpression firstMatchInString:line options:0 range:NSMakeRange(0, line.length)];
-            if (result.range.location != NSNotFound && result.numberOfRanges == 5) {
-                NSRange keyRange = [result rangeAtIndex:2];
-                if (keyRange.location == NSNotFound)
-                    keyRange = [result rangeAtIndex:3];
-                
-                NSRange valueRange = [result rangeAtIndex:4];
-                
-                NSString *key = [line substringWithRange:keyRange];
-                NSString *value = [line substringWithRange:valueRange];
-                
-                if (key && value) {
-                    [mutableString appendFormat:@"<string name=\"%@\">%@</string>\n",key, value];
-                }
-            } else {
-                [mutableString appendFormat:@"\n"];
-            }
-        }];
-        
-        NSString *fileName = [NSString stringWithFormat:@"%@.xml",model.identifier];
-        NSString *filePath = [docPath stringByAppendingPathComponent:fileName];
-        [mutableString writeToFile:filePath atomically:YES encoding:NSUTF8StringEncoding error:nil];
-    }
-    
-    [[NSWorkspace sharedWorkspace] openFile:docPath];
+    [utils exportXML:self.projectName stringArray:_stringArray];
 }
 
 -(void)cellClicked:(id)sender {
@@ -601,7 +561,7 @@
     
     if (column == 0) {
         StringSetting *setting = [StringModel projectSettingByProjectPath:self.projectPath projectName:self.projectName];
-        if (setting.language == StringLanguageSwift)
+        if (setting.language == swift)
             value = [NSString stringWithFormat:@"\"%@\"",value];
         else
             value = [NSString stringWithFormat:@"@\"%@\"",value];

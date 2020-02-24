@@ -26,7 +26,7 @@
                                    ];
     NSInteger language = [StringModel devLanguageWithProjectPath:projectPath];
     projectSetting.language = language;
-    if (language == StringLanguageSwift) {
+    if (language == swift) {
         //key will be replace with "value"
         projectSetting.doubleClickWrapper = @"NSLocalizedString(key, comment: "")";
     }else{
@@ -85,7 +85,7 @@ static NSString *maxOperationCount = @"maxOperationCount";
 
 -(NSString*)doubleClickWrapper{
     if (!_doubleClickWrapper) {
-        if (_language == StringLanguageSwift) {
+        if (_language == swift) {
             //key will be replace with "value"
             _doubleClickWrapper = @"NSLocalizedString(key, comment: "")";
         }else{

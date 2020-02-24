@@ -69,11 +69,7 @@ NSString * const kRegularExpressionPattern = @"^(\"([^/]\\S+.*)\"|([^/]\\S+.*\\S
         if(![action.identifier isEqualToString:_identifier] || action.key.length == 0)
             continue;
         
-        NSString *pattern = nil;
-        if (projectSetting.language == StringLanguageSwift)
-            pattern = [NSString stringWithFormat:@"%@\\s*=\\s*\"(.*)\";$",action.key];
-        else
-            pattern = [NSString stringWithFormat:@"\"%@\"\\s*=\\s*\"(.*)\";$",action.key];
+        NSString *pattern = [NSString stringWithFormat:@"^\"?%@\"?\\s*=\\s*\"(.*)\";$",action.key];
         
         NSRegularExpression *regExp = [NSRegularExpression regularExpressionWithPattern:pattern options:0 error:nil];
         
@@ -101,10 +97,7 @@ NSString * const kRegularExpressionPattern = @"^(\"([^/]\\S+.*)\"|([^/]\\S+.*\\S
         if(!found && action.actionType == ActionTypeAdd && action.value.length > 0) {
             if(![mutableString hasSuffix:@"\n"])
                 [mutableString appendFormat:@"\n"];
-            if(projectSetting.language == StringLanguageSwift)
-                [mutableString appendFormat:@"%@ = \"%@\";",action.key, action.value];
-            else
-                [mutableString appendFormat:@"\"%@\" = \"%@\";",action.key, action.value];
+            [mutableString appendFormat:@"\"%@\" = \"%@\";",action.key, action.value];
         }
     }
     //write to filepath

@@ -9,9 +9,9 @@
 #import <Foundation/Foundation.h>
 
 typedef enum : NSUInteger {
-    StringLanguageObjC,
-    StringLanguageSwift,
-} StringLanguage;
+    objc,
+    swift,
+} DevLanguage;
 
 @interface StringSetting : NSObject<NSCoding>
 @property (nonatomic , copy) NSString* searchDirectory;

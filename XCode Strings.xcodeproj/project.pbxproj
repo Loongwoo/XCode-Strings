@@ -29,6 +29,8 @@
 		11262D6B1DF018F300F8D181 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = 11262D6D1DF018F300F8D181 /* Localizable.strings */; };
 		11262D9B1DF028FD00F8D181 /* Icon.icns in Resources */ = {isa = PBXBuildFile; fileRef = 11262D9A1DF028FD00F8D181 /* Icon.icns */; };
 		1170A4081DF4FDC000445787 /* NSMutableArray+LSCore.m in Sources */ = {isa = PBXBuildFile; fileRef = 1170A4071DF4FDC000445787 /* NSMutableArray+LSCore.m */; };
+		D3537F052403A0EE003DB9AA /* utils.m in Sources */ = {isa = PBXBuildFile; fileRef = D3537F042403A0EE003DB9AA /* utils.m */; };
+		D3537F082403A2F0003DB9AA /* NSTimer+GCD.m in Sources */ = {isa = PBXBuildFile; fileRef = D3537F072403A2F0003DB9AA /* NSTimer+GCD.m */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -72,6 +74,10 @@
 		11262D9A1DF028FD00F8D181 /* Icon.icns */ = {isa = PBXFileReference; lastKnownFileType = image.icns; path = Icon.icns; sourceTree = "<group>"; };
 		1170A4061DF4FDC000445787 /* NSMutableArray+LSCore.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "NSMutableArray+LSCore.h"; sourceTree = "<group>"; };
 		1170A4071DF4FDC000445787 /* NSMutableArray+LSCore.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "NSMutableArray+LSCore.m"; sourceTree = "<group>"; };
+		D3537F032403A0EE003DB9AA /* utils.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = utils.h; sourceTree = "<group>"; };
+		D3537F042403A0EE003DB9AA /* utils.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = utils.m; sourceTree = "<group>"; };
+		D3537F062403A2F0003DB9AA /* NSTimer+GCD.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "NSTimer+GCD.h"; sourceTree = "<group>"; };
+		D3537F072403A2F0003DB9AA /* NSTimer+GCD.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = "NSTimer+GCD.m"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -140,6 +146,8 @@
 				11262D421DF0142E00F8D181 /* NSArray+Extension.m */,
 				1170A4061DF4FDC000445787 /* NSMutableArray+LSCore.h */,
 				1170A4071DF4FDC000445787 /* NSMutableArray+LSCore.m */,
+				D3537F062403A2F0003DB9AA /* NSTimer+GCD.h */,
+				D3537F072403A2F0003DB9AA /* NSTimer+GCD.m */,
 			);
 			name = Categorys;
 			sourceTree = "<group>";
@@ -161,6 +169,8 @@
 				11262D541DF0145600F8D181 /* StringEditViewController.h */,
 				11262D551DF0145600F8D181 /* StringEditViewController.m */,
 				11262D561DF0145600F8D181 /* StringEditViewController.xib */,
+				D3537F032403A0EE003DB9AA /* utils.h */,
+				D3537F042403A0EE003DB9AA /* utils.m */,
 			);
 			name = GUI;
 			sourceTree = "<group>";
@@ -257,8 +267,10 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D3537F052403A0EE003DB9AA /* utils.m in Sources */,
 				11262D461DF0142E00F8D181 /* NSArray+Extension.m in Sources */,
 				11262D451DF0142E00F8D181 /* NSString+Extension.m in Sources */,
+				D3537F082403A2F0003DB9AA /* NSTimer+GCD.m in Sources */,
 				11262D671DF0146200F8D181 /* StringModel.m in Sources */,
 				11262D441DF0142E00F8D181 /* NSButton+Extension.m in Sources */,
 				11262D681DF0146200F8D181 /* StringSetting.m in Sources */,
