@@ -1,0 +1,309 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<document type="com.apple.InterfaceBuilder3.Cocoa.XIB" version="3.0" toolsVersion="13529" targetRuntime="MacOSX.Cocoa" propertyAccessControl="none">
+    <dependencies>
+        <deployment identifier="macosx"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.CocoaPlugin" version="13529"/>
+        <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
+    </dependencies>
+    <objects>
+        <customObject id="-2" userLabel="File's Owner" customClass="StringWindowController">
+            <connections>
+                <outlet property="CheckBtn" destination="mxn-nE-3Fy" id="r2b-Xf-ELz"/>
+                <outlet property="addBtn" destination="dZd-QA-tK3" id="N8L-iu-Shm"/>
+                <outlet property="checkIndicator" destination="pKF-Oh-0CL" id="kHz-x0-L2f"/>
+                <outlet property="exportXMLBtn" destination="QQM-uN-oSc" id="BdG-41-fv8"/>
+                <outlet property="progressIndicator" destination="5uT-PR-2fe" id="ihM-7D-qal"/>
+                <outlet property="recordLabel" destination="BZv-nw-cuW" id="XVL-I7-8LD"/>
+                <outlet property="refreshBtn" destination="51u-NQ-dAe" id="zJE-9L-OZM"/>
+                <outlet property="saveBtn" destination="I4O-1U-Rjs" id="77R-hv-hZK"/>
+                <outlet property="searchField" destination="mDh-8w-vmB" id="C4z-r1-2n2"/>
+                <outlet property="showOnlyBtn" destination="IAX-S9-VGn" id="zke-3A-7Pu"/>
+                <outlet property="tableview" destination="8Bz-xn-9ZO" id="xDf-bO-Rpn"/>
+                <outlet property="tipsLabel" destination="Rgz-Ey-KJf" id="7l4-gl-IxA"/>
+                <outlet property="untranslatedBtn" destination="4vR-Tl-loV" id="TVg-2u-TLU"/>
+                <outlet property="unusedBtn" destination="tqc-Zr-0QD" id="TmQ-Jj-lDe"/>
+                <outlet property="window" destination="1" id="3"/>
+            </connections>
+        </customObject>
+        <customObject id="-1" userLabel="First Responder" customClass="FirstResponder"/>
+        <customObject id="-3" userLabel="Application" customClass="NSObject"/>
+        <window title="String Manager" allowsToolTipsWhenApplicationIsInactive="NO" autorecalculatesKeyViewLoop="NO" restorable="NO" oneShot="NO" releasedWhenClosed="NO" animationBehavior="default" id="1" customClass="NSPanel">
+            <windowStyleMask key="styleMask" titled="YES" closable="YES" resizable="YES"/>
+            <windowCollectionBehavior key="collectionBehavior" moveToActiveSpace="YES" transient="YES" fullScreenAuxiliary="YES"/>
+            <windowPositionMask key="initialPositionMask" rightStrut="YES" bottomStrut="YES"/>
+            <rect key="contentRect" x="1193" y="257" width="900" height="600"/>
+            <rect key="screenRect" x="0.0" y="0.0" width="1920" height="1178"/>
+            <value key="minSize" type="size" width="600" height="400"/>
+            <view key="contentView" id="2">
+                <rect key="frame" x="0.0" y="0.0" width="900" height="600"/>
+                <autoresizingMask key="autoresizingMask"/>
+                <subviews>
+                    <searchField wantsLayer="YES" verticalHuggingPriority="750" id="mDh-8w-vmB">
+                        <rect key="frame" x="0.0" y="578" width="900" height="22"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" flexibleMinY="YES"/>
+                        <searchFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" selectable="YES" editable="YES" borderStyle="bezel" usesSingleLineMode="YES" bezelStyle="round" id="qkq-Jw-S4h">
+                            <font key="font" metaFont="system"/>
+                            <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="textBackgroundColor" catalog="System" colorSpace="catalog"/>
+                            <connections>
+                                <action selector="searchAnswer:" target="-2" id="6tE-Id-BPz"/>
+                            </connections>
+                        </searchFieldCell>
+                    </searchField>
+                    <scrollView autohidesScrollers="YES" horizontalLineScroll="19" horizontalPageScroll="10" verticalLineScroll="19" verticalPageScroll="10" usesPredominantAxisScrolling="NO" id="Olz-UM-36X">
+                        <rect key="frame" x="0.0" y="68" width="901" height="512"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" widthSizable="YES" flexibleMaxX="YES" heightSizable="YES"/>
+                        <clipView key="contentView" drawsBackground="NO" id="VQE-gg-0rc">
+                            <rect key="frame" x="1" y="0.0" width="899" height="511"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                            <subviews>
+                                <tableView verticalHuggingPriority="750" allowsExpansionToolTips="YES" selectionHighlightStyle="sourceList" alternatingRowBackgroundColors="YES" columnReordering="NO" columnSelection="YES" multipleSelection="NO" autosaveColumns="NO" headerView="JdV-Fw-ypl" id="8Bz-xn-9ZO">
+                                    <rect key="frame" x="0.0" y="0.0" width="899" height="494"/>
+                                    <autoresizingMask key="autoresizingMask"/>
+                                    <size key="intercellSpacing" width="3" height="2"/>
+                                    <color key="backgroundColor" name="controlBackgroundColor" catalog="System" colorSpace="catalog"/>
+                                    <tableViewGridLines key="gridStyleMask" vertical="YES" horizontal="YES"/>
+                                    <color key="gridColor" name="gridColor" catalog="System" colorSpace="catalog"/>
+                                    <tableColumns>
+                                        <tableColumn identifier="key" width="896" minWidth="40" maxWidth="1000" id="9wt-Mv-HhU">
+                                            <tableHeaderCell key="headerCell" lineBreakMode="truncatingTail" borderStyle="border">
+                                                <font key="font" metaFont="smallSystem"/>
+                                                <color key="textColor" name="headerTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="headerColor" catalog="System" colorSpace="catalog"/>
+                                            </tableHeaderCell>
+                                            <textFieldCell key="dataCell" lineBreakMode="truncatingTail" selectable="YES" editable="YES" sendsActionOnEndEditing="YES" title="Text" id="UtW-6r-qok">
+                                                <font key="font" metaFont="system"/>
+                                                <color key="textColor" name="controlTextColor" catalog="System" colorSpace="catalog"/>
+                                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                                            </textFieldCell>
+                                            <tableColumnResizingMask key="resizingMask" resizeWithTable="YES" userResizable="YES"/>
+                                        </tableColumn>
+                                    </tableColumns>
+                                    <connections>
+                                        <outlet property="dataSource" destination="-2" id="UOp-Kb-EXd"/>
+                                        <outlet property="delegate" destination="-2" id="kOJ-Fa-jSB"/>
+                                    </connections>
+                                </tableView>
+                            </subviews>
+                            <nil key="backgroundColor"/>
+                        </clipView>
+                        <scroller key="horizontalScroller" hidden="YES" verticalHuggingPriority="750" doubleValue="0.5" horizontal="YES" id="M2p-Wz-7dE">
+                            <rect key="frame" x="1" y="496" width="899" height="15"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <scroller key="verticalScroller" hidden="YES" verticalHuggingPriority="750" horizontal="NO" id="5U4-bI-knl">
+                            <rect key="frame" x="224" y="17" width="15" height="102"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </scroller>
+                        <tableHeaderView key="headerView" id="JdV-Fw-ypl">
+                            <rect key="frame" x="1" y="0.0" width="899" height="17"/>
+                            <autoresizingMask key="autoresizingMask"/>
+                        </tableHeaderView>
+                    </scrollView>
+                    <button verticalHuggingPriority="750" id="dZd-QA-tK3">
+                        <rect key="frame" x="622" y="13" width="81" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Add" bezelStyle="rounded" alignment="center" lineBreakMode="truncatingTail" state="on" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="VXd-Qw-nAP">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="addAction:" target="-2" id="ogV-Pj-de8"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="I4O-1U-Rjs">
+                        <rect key="frame" x="713" y="13" width="81" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Save" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="a6e-yB-NOG">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="saveAction:" target="-2" id="GXa-48-ByN"/>
+                        </connections>
+                    </button>
+                    <button verticalHuggingPriority="750" id="51u-NQ-dAe">
+                        <rect key="frame" x="529" y="13" width="81" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Refresh" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="r9o-wg-iNy">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="refresh:" target="-2" id="SDI-iu-DzO"/>
+                        </connections>
+                    </button>
+                    <progressIndicator wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" indeterminate="YES" controlSize="small" style="spinning" id="5uT-PR-2fe">
+                        <rect key="frame" x="561" y="22" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    </progressIndicator>
+                    <button verticalHuggingPriority="750" id="mxn-nE-3Fy">
+                        <rect key="frame" x="805" y="13" width="81" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Check" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="nPH-Gb-nO1">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="checkAction:" target="-2" id="DlT-xH-7tE"/>
+                        </connections>
+                    </button>
+                    <textField horizontalHuggingPriority="251" verticalHuggingPriority="750" id="Rgz-Ey-KJf">
+                        <rect key="frame" x="8" y="6" width="503" height="17"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" alignment="left" title="Label" id="9au-B8-96M">
+                            <font key="font" metaFont="system" size="10"/>
+                            <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                            <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                        </textFieldCell>
+                    </textField>
+                    <progressIndicator hidden="YES" wantsLayer="YES" horizontalHuggingPriority="750" verticalHuggingPriority="750" maxValue="100" displayedWhenStopped="NO" bezeled="NO" controlSize="small" style="spinning" id="pKF-Oh-0CL">
+                        <rect key="frame" x="837" y="22" width="16" height="16"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMaxY="YES"/>
+                    </progressIndicator>
+                    <button verticalHuggingPriority="750" misplaced="YES" id="QQM-uN-oSc">
+                        <rect key="frame" x="16" y="24" width="111" height="32"/>
+                        <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                        <buttonCell key="cell" type="push" title="Export XML" bezelStyle="rounded" alignment="center" borderStyle="border" imageScaling="proportionallyDown" inset="2" id="jVL-ZR-SIb">
+                            <behavior key="behavior" pushIn="YES" lightByBackground="YES" lightByGray="YES"/>
+                            <font key="font" metaFont="system"/>
+                        </buttonCell>
+                        <connections>
+                            <action selector="exportXMLAction:" target="-2" id="Bwb-IB-4iy"/>
+                        </connections>
+                    </button>
+                </subviews>
+            </view>
+            <toolbar key="toolbar" implicitIdentifier="FE022600-8BEC-4CD9-9E13-4B6746454E02" autosavesConfiguration="NO" displayMode="iconOnly" sizeMode="small" id="rEi-SS-K4T">
+                <allowedToolbarItems>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSpaceItem" id="u08-bj-rSv"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarFlexibleSpaceItem" id="Hlr-zW-dBx"/>
+                    <toolbarItem implicitItemIdentifier="73390101-EBFD-41A6-ADE0-55CB103D508D" label="Select Folder" paletteLabel="Select" tag="-1" image="NSFolder" id="nDu-Su-piC"/>
+                    <toolbarItem implicitItemIdentifier="NSToolbarSeparatorItem" id="ZhF-7h-yzz"/>
+                    <toolbarItem implicitItemIdentifier="CF06CAF3-C5E1-4B0C-950B-860F1522CBA8" label="onlyShowModified" paletteLabel="onlyShowModified" image="toolbarItem:4mU-Dw-vRj:image" id="4mU-Dw-vRj">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="61" height="18"/>
+                        <size key="maxSize" width="104" height="18"/>
+                        <button key="view" id="IAX-S9-VGn">
+                            <rect key="frame" x="2" y="14" width="100" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" title="Check" bezelStyle="regularSquare" image="toolbarItem:4mU-Dw-vRj:image" imagePosition="left" inset="2" id="n7u-4s-h8b">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="searchAnswer:" target="-2" id="70B-JM-XCc"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="C1F0D4FC-0984-4E0D-8384-9886F54DB8BF" label="Untranslated" paletteLabel="Untranslated" image="toolbarItem:BEr-km-d67:image" id="BEr-km-d67">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="61" height="18"/>
+                        <size key="maxSize" width="104" height="18"/>
+                        <button key="view" id="4vR-Tl-loV">
+                            <rect key="frame" x="0.0" y="14" width="104" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" title="Check" bezelStyle="regularSquare" image="toolbarItem:BEr-km-d67:image" imagePosition="left" inset="2" id="r0R-Qv-fec">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="searchAnswer:" target="-2" id="Hdj-7i-jrE"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="F2065C06-32C4-40FF-9A8E-F74E308C6C4B" label="Unused" paletteLabel="Unused" image="toolbarItem:BEr-km-d67:image" id="F1z-iu-b0o">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="61" height="18"/>
+                        <size key="maxSize" width="104" height="18"/>
+                        <button key="view" id="tqc-Zr-0QD">
+                            <rect key="frame" x="0.0" y="14" width="104" height="18"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMinY="YES"/>
+                            <buttonCell key="cell" type="bevel" title="Check" bezelStyle="regularSquare" image="toolbarItem:BEr-km-d67:image" imagePosition="left" inset="2" id="SKH-UR-CDy">
+                                <behavior key="behavior" changeContents="YES" doesNotDimImage="YES" lightByContents="YES"/>
+                                <font key="font" metaFont="system"/>
+                            </buttonCell>
+                            <connections>
+                                <action selector="searchAnswer:" target="-2" id="Cwa-GR-YdT"/>
+                            </connections>
+                        </button>
+                    </toolbarItem>
+                    <toolbarItem implicitItemIdentifier="1A2E2B1B-7F59-4494-9B34-0B06549D582D" label="Record" paletteLabel="Record" id="ycV-u6-a5C">
+                        <nil key="toolTip"/>
+                        <size key="minSize" width="38" height="17"/>
+                        <size key="maxSize" width="139" height="17"/>
+                        <textField key="view" horizontalHuggingPriority="251" verticalHuggingPriority="750" id="BZv-nw-cuW">
+                            <rect key="frame" x="0.0" y="14" width="139" height="17"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMinX="YES" flexibleMinY="YES"/>
+                            <textFieldCell key="cell" scrollable="YES" lineBreakMode="clipping" sendsActionOnEndEditing="YES" baseWritingDirection="rightToLeft" id="0lE-45-o0g">
+                                <font key="font" metaFont="system"/>
+                                <color key="textColor" name="labelColor" catalog="System" colorSpace="catalog"/>
+                                <color key="backgroundColor" name="controlColor" catalog="System" colorSpace="catalog"/>
+                            </textFieldCell>
+                        </textField>
+                    </toolbarItem>
+                </allowedToolbarItems>
+                <defaultToolbarItems>
+                    <toolbarItem reference="4mU-Dw-vRj"/>
+                    <toolbarItem reference="ZhF-7h-yzz"/>
+                    <toolbarItem reference="BEr-km-d67"/>
+                    <toolbarItem reference="ZhF-7h-yzz"/>
+                    <toolbarItem reference="F1z-iu-b0o"/>
+                    <toolbarItem reference="Hlr-zW-dBx"/>
+                    <toolbarItem reference="ZhF-7h-yzz"/>
+                    <toolbarItem reference="ycV-u6-a5C"/>
+                </defaultToolbarItems>
+            </toolbar>
+            <connections>
+                <outlet property="delegate" destination="-2" id="4"/>
+            </connections>
+            <point key="canvasLocation" x="320" y="486"/>
+        </window>
+        <userDefaultsController representsSharedInstance="YES" id="rsX-lH-UUS"/>
+    </objects>
+    <resources>
+        <image name="NSFolder" width="32" height="32"/>
+        <image name="toolbarItem:4mU-Dw-vRj:image" width="18" height="18">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGZWZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QGQcI
+ERYbHCo3ODk6Ozw9PkVGR0tPVFdaX2JVJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZO
+U1JlcHNXTlNDb2xvcoAYEgDDAACAAoAW0hIJExVaTlMub2JqZWN0c6EUgAOAFdISCRcaohgZgASABYAU
+EADYHQkeHyAhIiMkJSYbGycoKVZOU1NpemVfEBBOU0NvbG9yU3BhY2VOYW1lXxAZTlNJbnRlcm5hbExh
+eW91dERpcmVjdGlvbl8QD05TQml0c1BlclNhbXBsZVxOU0NvbG9yU3BhY2VaTlNIYXNBbHBoYV8QFE5T
+Q29yZVVJSW1hZ2VPcHRpb25zgA+AE4AQgBEJgAbTKxIJLDE2V05TLmtleXOkLS4vMIAHgAiACYAKpDIY
+NDWAC4AEgAyADYAOVHNpemVVdmFsdWVVc3RhdGVWd2lkZ2V0V3JlZ3VsYXJWbm9ybWFsWGNoZWNrYm94
+0j9AQUJaJGNsYXNzbmFtZVgkY2xhc3Nlc18QE05TTXV0YWJsZURpY3Rpb25hcnmjQUNEXE5TRGljdGlv
+bmFyeVhOU09iamVjdFh7MTgsIDE4fV8QGU5TQ2FsaWJyYXRlZFJHQkNvbG9yU3BhY2XSSAlJSlROU0lE
+EAGAEtI/QExNXE5TQ29sb3JTcGFjZaJORFxOU0NvbG9yU3BhY2XSP0BQUV8QEE5TQ29yZVVJSW1hZ2VS
+ZXCjUlNEXxAQTlNDb3JlVUlJbWFnZVJlcFpOU0ltYWdlUmVw0j9AVVZXTlNBcnJheaJVRNI/QFhZXk5T
+TXV0YWJsZUFycmF5o1hVRNNbIQlcXV5XTlNXaGl0ZUQwIDAAEAOAF9I/QGBhV05TQ29sb3KiYETSP0Bj
+ZFdOU0ltYWdlomNEXxAPTlNLZXllZEFyY2hpdmVy0WdoVHJvb3SAAQAIABEAGgAjAC0AMgA3AFMAWQBi
+AGkAdgB9AIUAhwCMAI4AkACVAKAAogCkAKYAqwCuALAAsgC0ALYAxwDOAOEA/QEPARwBJwE+AUABQgFE
+AUYBRwFJAVABWAFdAV8BYQFjAWUBagFsAW4BcAFyAXQBeQF/AYUBjAGUAZsBpAGpAbQBvQHTAdcB5AHt
+AfYCEgIXAhwCHgIgAiUCMgI1AkICRwJaAl4CcQJ8AoECiQKMApECoAKkAqsCswK4AroCvALBAskCzALR
+AtkC3ALuAvEC9gAAAAAAAAIBAAAAAAAAAGkAAAAAAAAAAAAAAAAAAAL4A
+</mutableData>
+        </image>
+        <image name="toolbarItem:BEr-km-d67:image" width="18" height="18">
+            <mutableData key="keyedArchiveRepresentation">
+YnBsaXN0MDDUAQIDBAUGZWZYJHZlcnNpb25YJG9iamVjdHNZJGFyY2hpdmVyVCR0b3ASAAGGoK8QGQcI
+ERYbHCo3ODk6Ozw9PkVGR0tPVFdaX2JVJG51bGzUCQoLDA0ODxBWJGNsYXNzXE5TSW1hZ2VGbGFnc1ZO
+U1JlcHNXTlNDb2xvcoAYEgDDAACAAoAW0hIJExVaTlMub2JqZWN0c6EUgAOAFdISCRcaohgZgASABYAU
+EADYHQkeHyAhIiMkJSYbGycoKVZOU1NpemVfEBBOU0NvbG9yU3BhY2VOYW1lXxAZTlNJbnRlcm5hbExh
+eW91dERpcmVjdGlvbl8QD05TQml0c1BlclNhbXBsZVxOU0NvbG9yU3BhY2VaTlNIYXNBbHBoYV8QFE5T
+Q29yZVVJSW1hZ2VPcHRpb25zgA+AE4AQgBEJgAbTKxIJLDE2V05TLmtleXOkLS4vMIAHgAiACYAKpDIY
+NDWAC4AEgAyADYAOVHNpemVVdmFsdWVVc3RhdGVWd2lkZ2V0V3JlZ3VsYXJWbm9ybWFsWGNoZWNrYm94
+0j9AQUJaJGNsYXNzbmFtZVgkY2xhc3Nlc18QE05TTXV0YWJsZURpY3Rpb25hcnmjQUNEXE5TRGljdGlv
+bmFyeVhOU09iamVjdFh7MTgsIDE4fV8QGU5TQ2FsaWJyYXRlZFJHQkNvbG9yU3BhY2XSSAlJSlROU0lE
+EAGAEtI/QExNXE5TQ29sb3JTcGFjZaJORFxOU0NvbG9yU3BhY2XSP0BQUV8QEE5TQ29yZVVJSW1hZ2VS
+ZXCjUlNEXxAQTlNDb3JlVUlJbWFnZVJlcFpOU0ltYWdlUmVw0j9AVVZXTlNBcnJheaJVRNI/QFhZXk5T
+TXV0YWJsZUFycmF5o1hVRNNbIQlcXV5XTlNXaGl0ZUQwIDAAEAOAF9I/QGBhV05TQ29sb3KiYETSP0Bj
+ZFdOU0ltYWdlomNEXxAPTlNLZXllZEFyY2hpdmVy0WdoVHJvb3SAAQAIABEAGgAjAC0AMgA3AFMAWQBi
+AGkAdgB9AIUAhwCMAI4AkACVAKAAogCkAKYAqwCuALAAsgC0ALYAxwDOAOEA/QEPARwBJwE+AUABQgFE
+AUYBRwFJAVABWAFdAV8BYQFjAWUBagFsAW4BcAFyAXQBeQF/AYUBjAGUAZsBpAGpAbQBvQHTAdcB5AHt
+AfYCEgIXAhwCHgIgAiUCMgI1AkICRwJaAl4CcQJ8AoECiQKMApECoAKkAqsCswK4AroCvALBAskCzALR
+AtkC3ALuAvEC9gAAAAAAAAIBAAAAAAAAAGkAAAAAAAAAAAAAAAAAAAL4A
+</mutableData>
+        </image>
+    </resources>
+</document>
